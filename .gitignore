@@ -4,6 +4,7 @@
 /vars
 /vars-*
 /private-feeds
-
 #Eclipse
 .project
+/bin
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="data/oracle"/>
+	<classpathentry kind="src" path="ddl/oracle/_scripts"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="src" path="samples/common"/>
+	<classpathentry kind="src" path="samples/oracle"/>
+	<classpathentry excluding="rtpcr/" kind="src" path="samples/prepare"/>
+	<classpathentry kind="src" path="samples/prepare/rtpcr"/>
+	<classpathentry kind="src" path="samples/studies"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

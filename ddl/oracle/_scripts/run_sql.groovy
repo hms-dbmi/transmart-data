@@ -95,6 +95,7 @@ class IteratorWhile<T> implements Iterator<T> {
 
 def sqls = new LinkedBlockingQueue(
         SqlProducer.createMultipleFromEnv(nConn, options.user ?: null, options.password ?: null, true))
+		
 if (options.schema) {
     withPool sqls.size(), {
         sqls.eachParallel {
