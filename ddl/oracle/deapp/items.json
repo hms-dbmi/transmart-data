@@ -6,7 +6,39 @@
       "name" : "DEAPP_ANNOTATION"
     },
     "parents" : [ ]
-  }, {
+  },
+   {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "DEAPP",
+      "name" : "I2B2_SECURE"
+    },
+    "parents" : [ ]
+  },
+  {
+    "child" : {
+      "type" : "SEQUENCE",
+      "owner" : "DEAPP",
+      "name" : "I2B2_ID_SEQ"
+    },
+    "parents" : [ ]
+  },{
+    "child" : {
+      "type" : "TRIGGER",
+      "owner" : "DEAPP",
+      "name" : "TRG_I2B2_ID"
+    },
+    "parents" : [ ]
+  },
+  {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "DEAPP",
+      "name" : "CONCEPT_COUNTS"
+    },
+    "parents" : [ ]
+  },
+  {
     "child" : {
       "type" : "REF_CONSTRAINT",
       "owner" : "DEAPP",
@@ -2006,7 +2038,38 @@
       "name" : "DE_CHROMOSOMAL_REGION"
     },
     "file" : "deapp/de_chromosomal_region.sql"
+  },
+  {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "DEAPP",
+      "name" : "I2B2_SECURE"
+    },
+    "file" : "deapp/i2b2_secure.sql"
+  },
+  {
+    "item" : {
+      "type" : "SEQUENCE",
+      "owner" : "DEAPP",
+      "name" : "I2B2_ID_SEQ"
+    },
+    "file" : "deapp/i2b2.sql"
   }, {
+    "item" : {
+      "type" : "TRIGGER",
+      "owner" : "DEAPP",
+      "name" : "TRG_I2B2_ID"
+    },
+    "file" : "deapp/i2b2.sql"
+  },{
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "DEAPP",
+      "name" : "CONCEPT_COUNTS"
+    },
+    "file" : "deapp/concept_counts.sql"
+  },
+  {
     "item" : {
       "type" : "SEQUENCE",
       "owner" : "DEAPP",

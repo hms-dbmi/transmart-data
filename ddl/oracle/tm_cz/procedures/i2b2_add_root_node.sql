@@ -136,7 +136,7 @@ Begin
 		  ,sysdate as import_date
 		  ,null as sourcesystem_cd
 		  ,null as valuetype_cd
-		  ,I2B2_ID_SEQ.nextval as i2b2_id
+		  ,DEAPP.I2B2_ID_SEQ.nextval as i2b2_id
 	from dual
 	where not exists
 		 (select 1 from i2b2 x

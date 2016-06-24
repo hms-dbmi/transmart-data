@@ -1,9 +1,14 @@
-SCHEMAS = $(filter-out _% GLOBAL,$(shell find * -maxdepth 0 -type d))
+SCHEMAS = $(filter-out _% GLOBAL i2b2demodata i2b2metadata,$(shell find * -maxdepth 0 -type d))
+
+#We need to grant access to schemas we didn't create, as is the case with the i2b2 tables.
+GRANT_SCHEMAS= $(SCHEMAS)
+GRANT_SCHEMAS+=i2b2demodata
+GRANT_SCHEMAS+=i2b2metadata
 
 DUMP_SCHEMA_TARGETS = $(foreach s,$(SCHEMAS),dump_$(s))
 LOAD_SCHEMA_TARGETS = $(foreach s,$(SCHEMAS),load_$(s))
 WRITE_SYNONYM_TARGETS = $(foreach s,$(SCHEMAS),$(s)/_synonyms.sql)
-WRITE_GRANT_TARGETS = $(foreach s,$(SCHEMAS),$(s)/_grants.sql)
+WRITE_GRANT_TARGETS = $(foreach s,$(GRANT_SCHEMAS),$(s)/_grants.sql)
 LOAD_USER_TARGETS = $(foreach s,$(SCHEMAS),load_user_$(s))
 
 include ../../lib/makefile.inc

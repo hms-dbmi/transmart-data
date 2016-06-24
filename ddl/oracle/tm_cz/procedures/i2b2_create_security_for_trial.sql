@@ -104,14 +104,14 @@ BEGIN
 	
 	--	insert patients to patient_trial table
 	
-	delete from patient_trial
+	delete from DEAPP.patient_trial
 	where trial  = TrialID;
 	stepCt := stepCt + 1;
 	cz_write_audit(jobId,databaseName,procedureName,'Delete data for trial from I2B2DEMODATA patient_trial',SQL%ROWCOUNT,stepCt,'Done');
 	
 	commit;
   
-	insert into i2b2demodata.patient_trial
+	insert into DEAPP.patient_trial
 	(patient_num
 	,trial
 	,secure_obj_token

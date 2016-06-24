@@ -50,12 +50,12 @@ BEGIN
 
   stepCt := 0;
 
-  Execute immediate ('truncate table I2B2METADATA.i2b2_secure');
+  Execute immediate ('truncate table DEAPP.i2b2_secure');
 
   stepCt := stepCt + 1;
-  czx_write_audit(jobId,databaseName,procedureName,'Truncate I2B2METADATA i2b2_secure',0,stepCt,'Done');
+  czx_write_audit(jobId,databaseName,procedureName,'Truncate DEAPP i2b2_secure',0,stepCt,'Done');
 
-  insert into I2B2METADATA.i2b2_secure(
+  insert into DEAPP.i2b2_secure(
     C_HLEVEL,
     C_FULLNAME,
     C_NAME,
@@ -162,7 +162,7 @@ BEGIN
 			  ,sysdate as import_date
 			  ,null as sourcesystem_cd
 			  ,null as valuetype_cd
-			  ,I2B2_ID_SEQ.nextval as i2b2_id
+			  ,DEAPP.I2B2_ID_SEQ.nextval as i2b2_id
 		from dual;
 			  
 		stepCt := stepCt + 1;

@@ -8,6 +8,7 @@
  ,secure_study		in varchar2 := 'N'
  ,highlight_study	in	varchar2 := 'N'
  ,currentJobID		IN	NUMBER := null
+ ,FactSet IN VARCHAR2
 ) AUTHID CURRENT_USER
 AS
 /*************************************************************************
@@ -739,7 +740,7 @@ BEGIN
      import_date,
      sourcesystem_cd
     )
-    select seq_patient_num.nextval,
+    select "DEAPP"."seq_patient_num".nextval,
 		   t.sex_cd,
 		   t.age_in_years_num,
 		   t.race_cd,
@@ -796,7 +797,7 @@ BEGIN
 	,sourcesystem_cd
 	,table_name
 	)
-    select concept_id.nextval
+    select DEAPP.concept_id.nextval
 	     ,x.leaf_node
 		 ,x.node_name
 		 ,etlDate
@@ -878,7 +879,7 @@ BEGIN
 		  ,'LIKE'
 		  ,'T'		-- if i2b2 gets fixed to respect c_columndatatype then change to t.data_type
 		  ,'trial:' || TrialID 
-		  ,i2b2_id_seq.nextval
+		  ,DEAPP.i2b2_id_seq.nextval
 		  ,case when t.data_type = 'T' then null
 		   else '<?xml version="1.0"?><ValueMetadata><Version>3.02</Version><CreationDateTime>08/14/2008 01:22:59</CreationDateTime><TestID></TestID><TestName></TestName><DataType>PosFloat</DataType><CodeType></CodeType><Loinc></Loinc><Flagstouse></Flagstouse><Oktousevalues>Y</Oktousevalues><MaxStringLength></MaxStringLength><LowofLowValue>0</LowofLowValue><HighofLowValue>0</HighofLowValue><LowofHighValue>100</LowofHighValue>100<HighofHighValue>100</HighofHighValue><LowofToxicValue></LowofToxicValue><HighofToxicValue></HighofToxicValue><EnumValues></EnumValues><CommentsDeterminingExclusion><Com></Com></CommentsDeterminingExclusion><UnitValues><NormalUnits>ratio</NormalUnits><EqualUnits></EqualUnits><ExcludingUnits></ExcludingUnits><ConvertingUnits><Units></Units><MultiplyingFactor></MultiplyingFactor></ConvertingUnits></UnitValues><Analysis><Enums /><Counts /><New /></Analysis></ValueMetadata>'
 		   end
@@ -971,9 +972,9 @@ SET  --Static XML String
     COMMIT;		  
 	-- insert data in to sample dimentions - Changes made for requirements 1 and 2 
 
- INSERT INTO I2B2DEMODATA.SAMPLE_DIMENSION(SAMPLE_CD) 
+ INSERT INTO DEAPP.SAMPLE_DIMENSION(SAMPLE_CD) 
   SELECT DISTINCT SAMPLE_CD FROM 
-           wrk_clinical_data WHERE SAMPLE_CD NOT IN (SELECT SAMPLE_CD FROM I2B2DEMODATA.SAMPLE_DIMENSION) and  SAMPLE_CD is not null ;
+           wrk_clinical_data WHERE SAMPLE_CD NOT IN (SELECT SAMPLE_CD FROM DEAPP.SAMPLE_DIMENSION) and  SAMPLE_CD is not null ;
    stepCt := stepCt + 1;
 	cz_write_audit(jobId,databaseName,procedureName,'Inserted sample code into Sample Dimension table',SQL%ROWCOUNT,stepCt,'Done');
     

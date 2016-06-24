@@ -68,18 +68,5 @@ end if;
 end;
 $$;
 
---
--- Name: trg_patient_dimension; Type: TRIGGER; Schema: i2b2demodata; Owner: -
---
-CREATE TRIGGER trg_patient_dimension BEFORE INSERT ON patient_dimension FOR EACH ROW EXECUTE PROCEDURE tf_trg_patient_dimension();
 
---
--- Name: seq_patient_num; Type: SEQUENCE; Schema: i2b2demodata; Owner: -
---
-CREATE SEQUENCE seq_patient_num
-    START WITH 1000384597
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 

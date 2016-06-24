@@ -98,7 +98,7 @@ BEGIN
     INSERT INTO CONCEPT_DIMENSION
       (CONCEPT_CD, CONCEPT_PATH, NAME_CHAR,  UPDATE_DATE,  DOWNLOAD_DATE, IMPORT_DATE, SOURCESYSTEM_CD, TABLE_NAME)
     VALUES
-      (concept_id.nextval,
+      (DEAPP.concept_id.nextval,
       path,
       to_char(path_name),
       sysdate,
@@ -135,7 +135,7 @@ BEGIN
       'LIKE',
       'T',
       decode(TrialID,null,null,'trial:' || TrialID),
-	  i2b2_id_seq.nextval,
+	  DEAPP.i2b2_id_seq.nextval,
 	  '@'
     FROM
       CONCEPT_DIMENSION
