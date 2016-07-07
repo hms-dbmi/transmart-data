@@ -7,6 +7,18 @@
     },
     "parents" : [ ]
   },
+  {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "DEAPP",
+      "name" : "I2B2_TRIAL_NODES"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "I2B2METADATA",
+      "name" : "I2B2"
+    } ]
+  },
    {
     "child" : {
       "type" : "TABLE",
@@ -2024,7 +2036,17 @@
       "name" : "DEAPP_ANNOTATION"
     },
     "file" : "deapp/deapp_annotation.sql"
-  }, {
+  }, 
+  
+   {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "DEAPP",
+      "name" : "I2B2_TRIAL_NODES"
+    },
+    "file" : "deapp/views/i2b2_trial_nodes.sql"
+  },
+  {
     "item" : {
       "type" : "REF_CONSTRAINT",
       "owner" : "DEAPP",
