@@ -46,7 +46,7 @@ foreach ($arr as $line) {
 
 	if (key_exists($options, $sql_options_table)) {
                 $options = $sql_options_table[$options];
-        }	
+        }
 
 	if ($object_name[0] == '*') {
 		$object_type = substr($object_name, 1);
@@ -59,15 +59,23 @@ BEGIN
 		EXECUTE IMMEDIATE 'GRANT $rights ON "$schema"."' ||
 				rec.object_name || '" TO "$user"$options';
 	END LOOP;
+	EXCEPTION
+		WHEN OTHERS THEN
+			DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
 END;
 /
 
 EOD;
 	} else {
 		echo <<<EOD
-GRANT $rights ON "$schema"."$object_name" TO "$user"$options;
+BEGIN
+	EXECUTE IMMEDIATE 'GRANT $rights ON "$schema"."$object_name" TO "$user"$options';
+EXCEPTION
+	WHEN OTHERS THEN
+		DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
+END;
+/
 
 EOD;
 	}
 }
-
